@@ -1,0 +1,30 @@
+[package]
+name = "advent-of-code-2020"
+version = "0.1.0"
+authors = ["Sean McCauliff <smccauliff@linkedin.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+regex = "1"
+lazy_static = "1.4.0"
+
+[lib]
+bench = false
+test = false
+doc = false
+path = "src/lib/a2020lib.rs"
+name = "a2020"
+
+[[bin]]
+name = "dec2-1"
+path = "src/dec2-1/dec2-1.rs"
+
+[[bin]]
+name = "dec1-1"
+path = "src/dec1-1/main.rs"
+
+[[bin]]
+name = "dec1-2"
+path = "src/dec1-2/dec1-2.rs"
