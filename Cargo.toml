@@ -18,6 +18,10 @@ path = "src/lib/a2020lib.rs"
 name = "a2020"
 
 [[bin]]
+name = "dec4-1"
+path = "src/dec4-1/dec4-1.rs"
+
+[[bin]]
 name = "dec3-1"
 path = "src/dec3-1/dec3-1.rs"
 
