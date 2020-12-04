@@ -79,14 +79,16 @@ fn pid_valid(field_value_str : &str) -> bool {
 
 fn is_valid(entry : &str) -> bool {
     type V = fn(&str) -> bool;
-    let field_validators: HashMap<&str, fn(&str) -> bool> =
+    lazy_static! {
+        static ref FIELD_VALIDATORS: HashMap<&'static str, fn(&str) -> bool> =
         [("byr", byr_valid as V), ("iyr", iyr_valid as V), ("eyr", eyr_valid as V), ("hgt", hgt_valid as V), ("hcl", hcl_valid), ("ecl", ecl_valid as V), ("pid", pid_valid as V)]
-        .iter().cloned().collect();
+            .iter().cloned().collect();
+    }
     let mut seen = HashSet::new();
     entry.split_ascii_whitespace().for_each(|field| {
         let kv_pair : Vec<&str> = field.split(':').collect();
         let key = kv_pair[0];
-        match field_validators.get(key)  {
+        match FIELD_VALIDATORS.get(key)  {
             Some(validator) => if validator(kv_pair[1]) {
                 seen.insert(key);
             },
@@ -109,4 +111,5 @@ fn main() {
     process_lines(&args[1], p);
     let valid_count = accumulator.split(&"\n\n".to_string()).filter(|entry| is_valid(entry)).count();
     println!("valid count: {}", valid_count);
+    assert!(valid_count == 172)
 }
