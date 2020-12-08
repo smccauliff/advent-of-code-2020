@@ -16,6 +16,9 @@ test = false
 doc = false
 path = "src/lib/a2020lib.rs"
 name = "a2020"
+[[bin]]
+name = "dec7"
+path = "src/dec7/dec7.rs"
 
 [[bin]]
 name = "dec6-1"
