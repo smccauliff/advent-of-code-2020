@@ -101,7 +101,6 @@ fn is_valid(entry : &str) -> bool {
         }
     }
     return true;
-    //REQUIRED_FIELDS.fold_left(true, |truth, expected_field| truth && seen.contains(expected_field))
 }
 
 fn main() {
